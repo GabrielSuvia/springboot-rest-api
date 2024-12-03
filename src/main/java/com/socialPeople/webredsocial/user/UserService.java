@@ -2,8 +2,8 @@ package com.socialPeople.webredsocial.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.socialPeople.webredsocial.user.User;
 import java.text.ParseException;
+import java.util.ArrayList;
 
 @Service
 public class UserService{
@@ -15,9 +15,9 @@ public class UserService{
         this.userRepository = userRepository;
      }
 
-    public User getAllusers(){
+    public ArrayList<User> getAllusers(){
         try{
-      User user = userRepository.getUser();
+          ArrayList<User> user = userRepository.getUser();
         return user;
         }catch(ParseException e){
          System.out.println("Error al parsear fecha: " + e.getMessage());

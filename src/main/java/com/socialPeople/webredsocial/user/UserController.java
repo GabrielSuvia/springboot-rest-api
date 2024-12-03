@@ -1,10 +1,12 @@
 package com.socialPeople.webredsocial.user;
 
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.ArrayList;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import com.socialPeople.webredsocial.user.User;
 
 @RestController
 @RequestMapping("/user") // Ruta base del controlador
@@ -18,9 +20,9 @@ public class UserController {
 
     @GetMapping("/get")
     @ResponseBody  
-    public User recibirMensaje() {
+    public ArrayList<User> getUsers() {
         // Procesa el mensaje recibido y lo devuelve
-        User user = this.userService.getAllusers();
+        ArrayList<User> user = this.userService.getAllusers();
         return user;
     }
     /*
