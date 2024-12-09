@@ -6,6 +6,7 @@ target/
 .gitlab-ci.yml
 application.properties
 *.jar
+
 ### STS ###
 .apt_generated
 .classpath

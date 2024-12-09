@@ -10,5 +10,4 @@ public class WebredsocialApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(WebredsocialApplication.class, args);
 	}
-
 }

@@ -1,4 +1,4 @@
-package com.socialPeople.webredsocial.userTestIntegration;
+package com.socialPeople.webredsocial.userTest.integrationTest;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -82,7 +82,7 @@ public class WebredsocialApplicationTests {
     assertTrue(responseTime < 1000); // Tiempo de respuesta menor a 1 segundo
 }
      @Test
-      public void veryfiCompatibility() throws Exception {
+      public void verifyCompatibility() throws Exception {
 		// Verificar compatibilidad (verificar que el contenido sea compatible con diferentes navegadores)
 		mockMvc.perform(MockMvcRequestBuilders.get("/user/get"))
 		.andExpect(MockMvcResultMatchers.header().string("Content-Type", "application/json;charset=UTF-8"));

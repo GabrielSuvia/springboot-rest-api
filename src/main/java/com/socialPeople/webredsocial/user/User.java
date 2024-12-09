@@ -1,6 +1,6 @@
 package com.socialPeople.webredsocial.user;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class User{
     private String name;
@@ -8,11 +8,11 @@ public class User{
     private String phone;
     private String password;
     private String country;
-    private Date birthday;
+    private LocalDate birthday;
 
     public User() {}
 
-    public User(String name, String email, String phone, String password, String country, Date birthday){
+    public User(String name, String email, String phone, String password, String country, LocalDate birthday){
     this.name= name;
     this.email= email;
     this.phone= phone;
@@ -40,7 +40,7 @@ public String getCountry(){
     return this.country;
 }
 
-public Date getBirthday(){
+public LocalDate getBirthday(){
     return this.birthday;
 }
 }

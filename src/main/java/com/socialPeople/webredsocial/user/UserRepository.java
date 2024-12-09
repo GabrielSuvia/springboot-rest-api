@@ -1,8 +1,8 @@
 package com.socialPeople.webredsocial.user;
 import java.util.ArrayList;
-import java.util.Date;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import org.springframework.stereotype.Repository;
 
@@ -13,8 +13,8 @@ public class UserRepository{
 
     public ArrayList<User> getUser()throws ParseException {
         ArrayList<User> userList = new ArrayList<>();
-        SimpleDateFormat dat = new SimpleDateFormat("dd/MM/yyyy");
-        Date birthday = dat.parse("19/07/1994");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+LocalDate birthday = LocalDate.parse("19/07/1994", formatter);
            
            user = new User("jose","joseVillalva@hotmail.com","745856","123","Bolivia",birthday);
            userList.add(user);
