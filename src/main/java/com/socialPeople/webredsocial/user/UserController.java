@@ -23,7 +23,7 @@ public class UserController {
     public UserController(UserService userService){
           this.userService = userService;
     }
-
+   //Get of all users
     @GetMapping("/get")
     @ResponseBody  
     public ResponseEntity<Map<String, Object>> getUsers(@RequestParam(required = false) String Continue) {
@@ -42,6 +42,7 @@ public class UserController {
         .header("Content-Type", "application/json")
         .body(response);
     }
+       //Get an specific user
     /*
  @GetMapping("/info")
     @ResponseBody
@@ -50,5 +51,9 @@ public class UserController {
         return "Mensaje 2 recibido: ";
     }
 */
+      //Register of User
+
+      
+      //update of user
 
 }
