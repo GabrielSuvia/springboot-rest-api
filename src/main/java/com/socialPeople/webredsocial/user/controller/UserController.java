@@ -1,4 +1,4 @@
-package com.socialPeople.webredsocial.user;
+package com.socialPeople.webredsocial.user.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 
@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+
+import com.socialPeople.webredsocial.user.User;
+import com.socialPeople.webredsocial.user.service.UserService;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

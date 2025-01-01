@@ -1,10 +1,13 @@
-package com.socialPeople.webredsocial.user;
+package com.socialPeople.webredsocial.user.repository;
+
 import java.util.ArrayList;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 import org.springframework.stereotype.Repository;
+
+import com.socialPeople.webredsocial.user.User;
 
 
 @Repository
