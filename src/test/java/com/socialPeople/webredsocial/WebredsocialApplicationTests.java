@@ -1,4 +1,4 @@
-package com.socialPeople.webredsocial.userTest.integrationTest;
+package com.socialPeople.webredsocial;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 

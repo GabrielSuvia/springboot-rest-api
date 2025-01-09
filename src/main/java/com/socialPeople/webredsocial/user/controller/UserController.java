@@ -29,14 +29,9 @@ public class UserController {
    //Get of all users
     @GetMapping("/get")
     @ResponseBody  
-    public ResponseEntity<Map<String, Object>> getUsers(@RequestParam(required = false) String Continue) {
+    public ResponseEntity<Map<String, Object>> getUsers() {
         // Procesa el mensaje recibido y lo devuelve
         ArrayList<User> user = this.userService.getAllusers();
-
-        if (Continue != null && !Continue.isEmpty()) {
-            // Devuelve un error 400 con un mensaje de error específico FOR THE TEST
-            return ResponseEntity.badRequest().body(Collections.singletonMap("error", "Parámetro Continue no permitido"));
-        }
 
        Map<String, Object> response = new HashMap<>();
     response.put("users", user);

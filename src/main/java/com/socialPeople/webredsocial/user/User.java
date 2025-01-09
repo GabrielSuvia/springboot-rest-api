@@ -1,4 +1,4 @@
-package com.socialPeople.webredsocial.user;
+package com.socialPeople.webredsocial;
 
 import java.time.LocalDate;
 
