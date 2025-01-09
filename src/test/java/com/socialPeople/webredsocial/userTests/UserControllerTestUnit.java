@@ -1,11 +1,11 @@
 package com.socialPeople.webredsocial.userTests;
 
 import com.socialPeople.webredsocial.user.service;
+import com.socialPeople.webredsocial.user.controller;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.socialPeople.webredsocial.user.controller;
 @ExtendWith(MockitoExtension.class)
 
 public class UserControllerTestUnit {
@@ -37,8 +37,24 @@ public class UserControllerTestUnit {
 
          List<User> listUser = new ArrayList<>();
          when(userService.getAllusers).thenReturn(listUser);
+       
+         ResponseEntity<List<User>> response = userController.getUsers();
 
-
+         AssertEquals(HttpStatus.NO_CONTENT, response.getStatusCode());
+         AssertNull(response.getBody());
+         verify(userService, time(1)).getAllusers();
     }
+
+    @Test
+   void getUsers_WhenUserServiceThrowsException_ReturnsInternalServerError () {
+
+    when(userService.getAllusers()).thenThrow(new RuntimeException("Error al obtener usuarios"));
+
+    ResponseEntity<List<User>> response = userController.getAllUsers();
+
+    assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
+    assertNull(response.getBody());
+    verify(userService, times(1)).getAllusers();
+}
 
 }
