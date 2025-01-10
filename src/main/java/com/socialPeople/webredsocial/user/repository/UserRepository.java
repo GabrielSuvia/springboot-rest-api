@@ -7,7 +7,7 @@ import java.time.format.DateTimeFormatter;
 
 import org.springframework.stereotype.Repository;
 
-import com.socialPeople.webredsocial.user.User;
+import com.socialPeople.webredsocial.user.dto.User;
 
 
 @Repository

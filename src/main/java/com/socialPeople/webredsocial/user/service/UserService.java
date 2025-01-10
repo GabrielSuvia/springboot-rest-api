@@ -3,7 +3,7 @@ package com.socialPeople.webredsocial.user.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.socialPeople.webredsocial.user.User;
+import com.socialPeople.webredsocial.user.dto.User;
 import com.socialPeople.webredsocial.user.repository.UserRepository;
 
 import java.text.ParseException;  

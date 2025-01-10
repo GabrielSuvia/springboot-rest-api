@@ -7,7 +7,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.socialPeople.webredsocial.user.User;
+import com.socialPeople.webredsocial.user.dto.User;
 import com.socialPeople.webredsocial.user.service.UserService;
 
 import org.springframework.http.HttpStatus;
