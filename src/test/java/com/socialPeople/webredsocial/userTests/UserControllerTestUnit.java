@@ -1,7 +1,6 @@
 package com.socialPeople.webredsocial.userTests;
 
 import java.util.Map;
-import java.util.List;
 import java.util.ArrayList;
 
 import org.springframework.boot.test.context.SpringBootTest;
@@ -44,11 +43,12 @@ public class UserControllerTestUnit {
   // 1: case happy
   @Test
   void getUsers_ReturnAllUsers() {
-    // Arrange
+    // happy
     ArrayList<User> listUser = new ArrayList<>();
     listUser.add(new User());
     listUser.add(new User());
     when(userService.getAllusers()).thenReturn(listUser);
+
     // act
     ResponseEntity<Map<String, Object>> response = userController.getUsers();
 
@@ -169,6 +169,7 @@ public class UserControllerTestUnit {
     assertEquals(HttpStatus.OK, response.getStatusCode());
     assertTrue(response.getBody().get("Users") instanceof ArrayList);
     assertEquals(listUser, response.getBody().get("users"));
+    @SuppressWarnings("unchecked")
     ArrayList<User> arrUsers = (ArrayList<User>) response.getBody().get("users");
     assertEquals(1, arrUsers.size());
     Mockito.verify(userService, Mockito.times(1)).getAllusers();
