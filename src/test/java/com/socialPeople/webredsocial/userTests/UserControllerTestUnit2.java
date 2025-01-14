@@ -55,7 +55,7 @@ public class UserControllerTestUnit2 {
     // 2:case empty
 
     @Test
-    void getUsers_WhenUsersServerReturn_EmptyList() {
+    void getUserId_WhenUsersServerReturn_EmptyList() {
 
         User userId = new User();
         id = 1L;
@@ -72,7 +72,7 @@ public class UserControllerTestUnit2 {
     // 3:case null
 
     @Test
-    void getUsers_WhenUsersServerReturnNull() {
+    void getUserId_WhenUsersServerReturnNull() {
         User userId = null;
         id = 1L;
         // Arrange
@@ -91,7 +91,7 @@ public class UserControllerTestUnit2 {
     // 5:exceptions
 
     @Test
-    void getUsers_WhenUserServiceThrowsException_ReturnsInternalServerError() {
+    void getUserId_WhenUserServiceThrowsException_ReturnsInternalServerError() {
         id = 1L;
         when(userService.getAllusers()).thenThrow(new RuntimeException("Error al obtener el usuario"));
 
@@ -105,7 +105,7 @@ public class UserControllerTestUnit2 {
     // 6:execution flow
 
     @Test
-    void getUsers_ExecutionFlowAtLeastOneTime() {
+    void getUserId_ExecutionFlowAtLeastOneTime() {
         id = 1L;
 
         User userId = new User();
@@ -118,7 +118,7 @@ public class UserControllerTestUnit2 {
     // collaterals effects
 
     @Test
-    void getUsers_WhenifItHasCollateralsEffects() {
+    void getUserId_WhenifItHasCollateralsEffects() {
         // Arrange
         id = 1L;
         User userId = new User();
@@ -135,7 +135,7 @@ public class UserControllerTestUnit2 {
     // 8:expected return
 
     @Test
-    void getUsers_WhenReturnTheTypeAndFormat() {
+    void getUserId_WhenReturnTheTypeAndFormat() {
         id = 1L;
         User userId = new User("jose", "joseVillalva@hotmail.com", "745856", "123", "Bolivia", null);
         when(userService.getUserServiceId(id)).thenReturn(userId);
