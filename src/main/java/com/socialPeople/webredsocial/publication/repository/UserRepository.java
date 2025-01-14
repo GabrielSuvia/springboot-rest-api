@@ -11,7 +11,6 @@ import com.socialPeople.webredsocial.user.dto.User;
 
 @Repository
 public class UserRepository {
-
     private User user = new User("jose", "joseVillalva@hotmail.com", "745856", "123", "Bolivia", null);
 
     public ArrayList<User> getUser() throws ParseException {

@@ -3,7 +3,6 @@ package com.socialPeople.webredsocial.user.controller;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,20 +30,17 @@ public class UserController {
     @GetMapping("/getUsers")
     @ResponseBody
     public ResponseEntity<Map<String, Object>> getUsers() {
-        // Procesa el mensaje recibido y lo devuelve
         ArrayList<User> user = this.userService.getAllusers();
-
         Map<String, Object> response = new HashMap<>();
         response.put("users", user);
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .header("Content-Type", "application/json")
                 .body(response);
+
     }
-    // Get an specific user
 
-    @GetMapping("/:id")
-
+    @GetMapping("/{id}")
     @ResponseBody
     public ResponseEntity<User> getUserId(@PathVariable Long id) {
         User user = userService.getUserServiceId(id);

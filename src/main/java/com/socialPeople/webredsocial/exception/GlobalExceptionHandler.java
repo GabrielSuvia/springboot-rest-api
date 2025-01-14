@@ -1,6 +1,5 @@
-package com.socialPeople.webredsocial.user.exception;
+package com.socialPeople.webredsocial.exception;
 
-import com.socialPeople.webredsocial.user.exception.NotFoundException;
 import com.socialPeople.webredsocial.user.constant.Constants;
 import io.github.resilience4j.ratelimiter.RequestNotPermitted;
 import javax.validation.ConstraintViolationException;
@@ -17,7 +16,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
-
+  // validate not pass(400)
   @ExceptionHandler(MethodArgumentNotValidException.class)
   public final ResponseEntity<Map<String, String>> handleMethodArgumentNotValidEx(
       MethodArgumentNotValidException ex, WebRequest request) {
@@ -30,6 +29,7 @@ public class GlobalExceptionHandler {
     return getMapResponseEntity(ex);
   }
 
+  // 400
   @ExceptionHandler(RuntimeException.class)
   public ResponseEntity<SimpleEntry<String, String>> handleRuntimeException(RuntimeException ex) {
     return new ResponseEntity<>(
