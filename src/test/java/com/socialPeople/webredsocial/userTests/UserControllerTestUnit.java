@@ -21,11 +21,9 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import com.socialPeople.webredsocial.user.dto.User;
 import org.springframework.security.test.context.support.WithMockUser;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 
 @WithMockUser(username = "user", password = "123", roles = "USER")
 @SpringBootTest
-@AutoConfigureMockMvc
 @ExtendWith(MockitoExtension.class)
 public class UserControllerTestUnit {
 
@@ -95,7 +93,7 @@ public class UserControllerTestUnit {
   void getUsers_WhenTheBorderIsMaxAndMin() {
 
     ArrayList<User> maxUsers = new ArrayList<>();
-    for (int i = 0; i < 100; i++) {
+    for (int i = 0; i < 10000; i++) {
       maxUsers.add(new User());
     }
     when(userService.getAllusers()).thenReturn(maxUsers);

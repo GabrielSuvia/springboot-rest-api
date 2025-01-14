@@ -2,7 +2,7 @@ package com.socialPeople.webredsocial.user.dto;
 
 import java.time.LocalDate;
 
-public class User{
+public class User {
     private String name;
     private String email;
     private String phone;
@@ -10,38 +10,41 @@ public class User{
     private String country;
     private LocalDate birthday;
 
-    public User() {}
-
-    public User(String name, String email, String phone, String password, String country, LocalDate birthday){
-    this.name= name;
-    this.email= email;
-    this.phone= phone;
-    this.password= password;
-    this.country= country;
-    this.birthday= birthday;
+    public User() {
     }
-//getter and setter
 
-public String getName(){
-    return this.name;
-}
-public String getEmail(){
-    return this.email;
-}
-public String getPhone(){
-    return this.phone;
-}
+    public User(String name, String email, String phone, String password, String country, LocalDate birthday) {
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.password = password;
+        this.country = country;
+        this.birthday = birthday;
+    }
+    // getter and setter
 
-public String getPassword(){
-    return this.password;
-}
+    public String getName() {
+        return this.name;
+    }
 
-public String getCountry(){
-    return this.country;
-}
+    public String getEmail() {
+        return this.email;
+    }
 
-public LocalDate getBirthday(){
-    return this.birthday;
-}
-}
+    public String getPhone() {
+        return this.phone;
+    }
 
+    public String getPassword() {
+        return this.password;
+    }
+
+    public String getCountry() {
+        return this.country;
+    }
+
+    public LocalDate getBirthday() {
+        return this.birthday;
+    }
+
+}
