@@ -22,10 +22,15 @@ public class UserRepository {
         return userList;
     }
 
-    public User getUserRepositoryId(Long id) {
+    public User getUserRepositoryId(String id) {
         // db
         // User userId = user;
         return user;
+    }
+
+    public User userUpdate(String id, User userUpdate) {
+        User userUpdated = user;
+        return userUpdated;
     }
 
 }

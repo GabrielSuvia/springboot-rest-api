@@ -27,8 +27,14 @@ public class UserService {
 
   }
 
-  public User getUserServiceId(Long id) {
+  public User getUserServiceId(String id) {
     User userId = userRepository.getUserRepositoryId(id);
     return userId;
   }
+
+  public User userServiceUpdate(String id, User userUpdate) {
+    User userUpdated = userRepository.userUpdate(id, userUpdate);
+    return userUpdated;
+  }
+
 }

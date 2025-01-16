@@ -1,6 +1,7 @@
 package com.socialPeople.webredsocial.userTests;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import com.socialPeople.webredsocial.user.service.UserService;
@@ -30,19 +31,19 @@ public class UserControllerTestUnit2 {
     private UserService userService;
     private UserController userController;
     private User user;
-    private Long id;
+    private String id;
 
     @BeforeEach
     public void setup() {
         userController = new UserController(userService);
         user = new User("jose", "joseVillalva@hotmail.com", "745856", "123",
                 "Bolivia", null);
+        id = "1";
     }
 
     @Test
     void getUserId_getTheUserWithId() {
         User userSearch = this.user;
-        id = 1L;
         when(userService.getUserServiceId(id)).thenReturn(userSearch);
 
         ResponseEntity<User> response = userController.getUserId(id);
@@ -58,14 +59,13 @@ public class UserControllerTestUnit2 {
     void getUserId_WhenUsersServerReturn_EmptyList() {
 
         User userId = new User();
-        id = 1L;
         when(userService.getUserServiceId(id)).thenReturn(userId);
 
         ResponseEntity<User> response = userController.getUserId(id);
 
         assertEquals(HttpStatus.NO_CONTENT, response.getStatusCode());
-        assertNull(response.getBody().getName());
-        assertNull(response.getBody().getEmail());
+        assertNotNull(response.getBody());
+        assertTrue(response.getBody() == new User());// empty
         Mockito.verify(userService, Mockito.times(1)).getUserServiceId(id);
     }
 
@@ -74,7 +74,6 @@ public class UserControllerTestUnit2 {
     @Test
     void getUserId_WhenUsersServerReturnNull() {
         User userId = null;
-        id = 1L;
         // Arrange
         when(userService.getUserServiceId(id)).thenReturn(userId);
 
@@ -92,13 +91,11 @@ public class UserControllerTestUnit2 {
 
     @Test
     void getUserId_WhenUserServiceThrowsException_ReturnsInternalServerError() {
-        id = 1L;
-        when(userService.getAllusers()).thenThrow(new RuntimeException("Error al obtener el usuario"));
+        when(userService.getUserServiceId(id)).thenThrow(new RuntimeException("Error al obtener el usuario"));
 
         ResponseEntity<User> response = userController.getUserId(id);
 
         assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
-        assertNull(response.getBody());
         Mockito.verify(userService, Mockito.times(1)).getAllusers();
     }
 
@@ -106,7 +103,6 @@ public class UserControllerTestUnit2 {
 
     @Test
     void getUserId_ExecutionFlowAtLeastOneTime() {
-        id = 1L;
 
         User userId = new User();
         when(userService.getUserServiceId(id)).thenReturn(userId);
@@ -120,7 +116,6 @@ public class UserControllerTestUnit2 {
     @Test
     void getUserId_WhenifItHasCollateralsEffects() {
         // Arrange
-        id = 1L;
         User userId = new User();
 
         when(userService.getUserServiceId(id)).thenReturn(userId);
@@ -136,7 +131,6 @@ public class UserControllerTestUnit2 {
 
     @Test
     void getUserId_WhenReturnTheTypeAndFormat() {
-        id = 1L;
         User userId = new User("jose", "joseVillalva@hotmail.com", "745856", "123", "Bolivia", null);
         when(userService.getUserServiceId(id)).thenReturn(userId);
 

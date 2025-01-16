@@ -47,4 +47,28 @@ public class User {
         return this.birthday;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPhone(String number) {
+        this.phone = number;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public void getBirthday(LocalDate date) {
+        this.birthday = date;
+    }
+
 }

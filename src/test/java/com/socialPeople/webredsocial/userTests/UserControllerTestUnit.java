@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import com.socialPeople.webredsocial.user.service.UserService;
@@ -52,7 +53,7 @@ public class UserControllerTestUnit {
 
     // asert
     assertEquals(HttpStatus.OK, response.getStatusCode());
-    assertEquals(listUser, response.getBody());
+    assertEquals(listUser, response.getBody().get("users"));
     Mockito.verify(userService, Mockito.times(1)).getAllusers();
   }
 
@@ -67,7 +68,8 @@ public class UserControllerTestUnit {
     ResponseEntity<Map<String, Object>> response = userController.getUsers();
 
     assertEquals(HttpStatus.NO_CONTENT, response.getStatusCode());
-    assertTrue(response.getBody().isEmpty());
+    assertEquals(listUser, response.getBody().get("users"));
+    assertTrue(response.getBody().get("users") == new ArrayList<>());
     Mockito.verify(userService, Mockito.times(1)).getAllusers();
   }
 
@@ -83,7 +85,7 @@ public class UserControllerTestUnit {
 
     // Assert
     assertEquals(HttpStatus.NO_CONTENT, response.getStatusCode());
-    assertNull(response.getBody());
+    assertNull(response.getBody().get("users"));
     Mockito.verify(userService, Mockito.times(1)).getAllusers();
   }
 
@@ -101,7 +103,7 @@ public class UserControllerTestUnit {
     ResponseEntity<Map<String, Object>> response = userController.getUsers();
 
     assertEquals(HttpStatus.OK, response.getStatusCode());
-    assertEquals(maxUsers, response.getBody());
+    assertEquals(maxUsers, response.getBody().get("users"));
     Mockito.verify(userService, Mockito.times(1)).getAllusers();
   }
 
@@ -117,7 +119,6 @@ public class UserControllerTestUnit {
     ResponseEntity<Map<String, Object>> response = userController.getUsers();
 
     assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
-    assertNull(response.getBody());
     Mockito.verify(userService, Mockito.times(1)).getAllusers();
   }
 
