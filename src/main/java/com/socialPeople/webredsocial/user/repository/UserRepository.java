@@ -14,7 +14,7 @@ public class UserRepository {
 
     private User user = new User("jose", "joseVillalva@hotmail.com", "745856", "123", "Bolivia", null);
 
-    public ArrayList<User> getUser() throws ParseException {
+    public ArrayList<User> getUser() {
         ArrayList<User> userList = new ArrayList<>();
         // DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         // LocalDate birthday = LocalDate.parse("19/07/1994", formatter);
@@ -34,13 +34,3 @@ public class UserRepository {
     }
 
 }
-
-/*
- * import org.springframework.data.jpa.repository.jpaRepository;
- * import org.springframework.stereotype.repository;
- * 
- * @repository
- * public interface UserRepository extends jpaRepository<>{
- * 
- * }
- */

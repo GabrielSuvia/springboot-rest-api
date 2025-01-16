@@ -94,7 +94,7 @@ public class UserControllerTestUnit3 {
     // 4: edge condition
 
     @Test
-    void putMethodName_WhenTheBorderIsMaxAndMin() {
+    void putMethodName_WhenTheBorderIsMaxAndMinCharacter() {
 
         User userCharacter = user;
         userCharacter.setName(String.valueOf(new char[1000]));

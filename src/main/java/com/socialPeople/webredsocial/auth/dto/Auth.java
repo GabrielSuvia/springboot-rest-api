@@ -22,4 +22,12 @@ public class Auth {
         return this.password;
     }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void getPassword(String password) {
+        this.password = password;
+    }
+
 }

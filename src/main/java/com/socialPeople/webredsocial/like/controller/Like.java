@@ -1,4 +1,4 @@
-package com.socialPeople.webredsocial.like;
+package com.socialPeople.webredsocial.like.controller;
 
 public class Like {
 

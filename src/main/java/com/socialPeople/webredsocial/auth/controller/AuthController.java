@@ -1,5 +1,30 @@
 package com.socialPeople.webredsocial.auth.controller;
 
-public class AuthController {
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
+import com.socialPeople.webredsocial.auth.dto.Auth;
+import com.socialPeople.webredsocial.auth.service.AuthService;
+import com.socialPeople.webredsocial.user.dto.User;
+
+@RestController
+@RequestMapping("/auth")
+
+public class AuthController {
+    private AuthService authService;
+
+    public AuthController(AuthService authService) {
+        this.authService = authService;
+    }
+
+    @PostMapping("sigup")
+    @ResponseBody
+    public ResponseEntity<Auth> singUpUser(@RequestBody User userNew) {
+        Auth user = this.authService.signUpService(userNew);
+        return ResponseEntity.ok(user);
+    }
 }
