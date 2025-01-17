@@ -11,4 +11,9 @@ public class AuthRepository {
         Auth user = userRepo;// db
         return user;
     }
+
+    public Auth userSignIn(Auth userIn) {
+        Auth userAuth = userRepo;
+        return userAuth;
+    }
 }

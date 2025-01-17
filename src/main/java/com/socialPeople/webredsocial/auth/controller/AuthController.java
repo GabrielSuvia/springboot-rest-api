@@ -21,10 +21,18 @@ public class AuthController {
         this.authService = authService;
     }
 
-    @PostMapping("sigup")
+    @PostMapping("signup")
     @ResponseBody
-    public ResponseEntity<Auth> singUpUser(@RequestBody User userNew) {
+    public ResponseEntity<Auth> signUpUser(@RequestBody User userNew) {
         Auth user = this.authService.signUpService(userNew);
         return ResponseEntity.ok(user);
     }
+
+    @PostMapping("signIn")
+    @ResponseBody
+    public ResponseEntity<Auth> signIn(@RequestBody User userNew) {
+        Auth user = this.authService.signUpService(userNew);
+        return ResponseEntity.ok(user);
+    }
+
 }

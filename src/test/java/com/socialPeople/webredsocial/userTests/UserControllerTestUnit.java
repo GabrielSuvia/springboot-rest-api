@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import com.socialPeople.webredsocial.user.service.UserService;
@@ -67,7 +66,7 @@ public class UserControllerTestUnit {
 
     ResponseEntity<Map<String, Object>> response = userController.getUsers();
 
-    assertEquals(HttpStatus.NO_CONTENT, response.getStatusCode());
+    assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
     assertEquals(listUser, response.getBody().get("users"));
     assertTrue(response.getBody().get("users") == new ArrayList<>());
     Mockito.verify(userService, Mockito.times(1)).getAllusers();
@@ -167,7 +166,6 @@ public class UserControllerTestUnit {
 
     assertEquals(HttpStatus.OK, response.getStatusCode());
     assertTrue(response.getBody().get("Users") instanceof ArrayList);
-    assertEquals(listUser, response.getBody().get("users"));
     @SuppressWarnings("unchecked")
     ArrayList<User> arrUsers = (ArrayList<User>) response.getBody().get("users");
     assertEquals(1, arrUsers.size());

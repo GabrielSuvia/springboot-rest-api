@@ -19,4 +19,9 @@ public class AuthService {
         Auth user = this.authRepository.createUserRepository(userCreate);
         return user;
     }
+
+    public Auth signInService(Auth userIn) {
+        Auth userAuth = this.authRepository.userSignIn(userIn);
+        return userAuth;
+    }
 }
