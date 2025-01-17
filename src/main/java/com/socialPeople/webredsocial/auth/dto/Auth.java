@@ -26,7 +26,7 @@ public class Auth {
         this.email = email;
     }
 
-    public void getPassword(String password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 
