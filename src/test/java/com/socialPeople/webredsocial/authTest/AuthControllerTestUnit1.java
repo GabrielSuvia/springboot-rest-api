@@ -39,18 +39,17 @@ public class AuthControllerTestUnit1 {
     @BeforeEach
     public void setup() {
         authController = new AuthController(authService);
-        auth = new Auth("hello@hotmail.com", "355852");
         user = new User("jose", "joseVillalva@hotmail.com", "745856", "123",
                 "Bolivia", null);
     }
 
     @Test
     public void signUpUser_ReturnTheResponseSuccessfully() {
-        Auth authUser = auth;
+        Auth authUser = new Auth(user.getEmail(), user.getPassword());
 
         when(authService.signUpService(user)).thenReturn(authUser);
 
-        ResponseEntity<Auth> response = this.authController.signIn(authUser);
+        ResponseEntity<Auth> response = this.authController.signUpUser(user);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals(authUser, response.getBody());
@@ -92,9 +91,12 @@ public class AuthControllerTestUnit1 {
     }
 
     @Test
-    public void signUpService_WhenTheCharacterHasTheMax() {
-        auth.setEmail(String.valueOf(new char[1000]));
-        auth.setPassword(String.valueOf(new char[1000]));
+    public void signUpUser_WhenTheCharacterHasTheMax() {
+        user.setEmail(String.valueOf(new char[1000]));
+        user.setPassword(String.valueOf(new char[1000]));
+        auth.setEmail(user.getEmail());
+        auth.setPassword(user.getPassword());
+
         when(authService.signUpService(user)).thenReturn(auth);
 
         ResponseEntity<Auth> response = this.authController.signUpUser(user);
@@ -115,7 +117,7 @@ public class AuthControllerTestUnit1 {
 
     @Test
     public void signUpUser_ExecutionFlowAtLeastOneTime() {
-        Auth authUser = auth;
+        Auth authUser = new Auth(user.getEmail(), user.getPassword());
         when(authService.signUpService(user)).thenReturn(authUser);
 
         authController.signUpUser(user);
@@ -126,7 +128,7 @@ public class AuthControllerTestUnit1 {
     @Test
     public void signUpUser_WhenifItHasCollateralsEffects() {
         // Arrange
-        Auth authUser = auth;
+        Auth authUser = new Auth(user.getEmail(), user.getPassword());
 
         when(authService.signUpService(user)).thenReturn(authUser);
 
@@ -139,7 +141,7 @@ public class AuthControllerTestUnit1 {
 
     @Test
     void signUpUser_WhenReturnTheTypeAndFormat() {
-        Auth authUser = auth;
+        Auth authUser = new Auth(user.getEmail(), user.getPassword());
         when(authService.signUpService(user)).thenReturn(authUser);
 
         ResponseEntity<Auth> response = authController.signUpUser(user);

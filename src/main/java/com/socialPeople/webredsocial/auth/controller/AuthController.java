@@ -30,8 +30,8 @@ public class AuthController {
 
     @PostMapping("signIn")
     @ResponseBody
-    public ResponseEntity<Auth> signIn(@RequestBody User userNew) {
-        Auth user = this.authService.signUpService(userNew);
+    public ResponseEntity<Auth> signIn(@RequestBody Auth userNew) {
+        Auth user = this.authService.signInService(userNew);
         return ResponseEntity.ok(user);
     }
 

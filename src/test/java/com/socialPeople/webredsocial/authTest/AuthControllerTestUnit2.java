@@ -43,14 +43,13 @@ public class AuthControllerTestUnit2 {
 
     @Test
     public void signIn_ReturnTheResponseSuccessfully() {
-        Auth authUser = auth;
 
-        when(authService.signInService(auth)).thenReturn(authUser);
+        when(authService.signInService(auth)).thenReturn(auth);
 
-        ResponseEntity<Auth> response = this.authController.signIn(authUser);
+        ResponseEntity<Auth> response = this.authController.signIn(auth);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals(authUser, response.getBody());
+        assertEquals(auth, response.getBody());
         Mockito.verify(authService, Mockito.times(1)).signInService(auth);
     }
 
