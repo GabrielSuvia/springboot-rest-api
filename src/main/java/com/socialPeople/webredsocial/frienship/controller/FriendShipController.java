@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.socialPeople.webredsocial.frienship.dto.FriendShip;
+import com.socialPeople.webredsocial.frienship.service.ServiceFriendShip;
 
 @RestController
 @RequestMapping("/friendShip")
@@ -38,17 +39,16 @@ public class FriendShipController {
 
     // POST to create a new friendship
     @PostMapping
-    public ResponseEntity<FriendShip> createFriendship(@RequestBody FriendShip friendship) {
+    public ResponseEntity<String> createFriendship(@RequestBody FriendShip friendship) {
         // Logic to create a new friendship
-        FriendShip friendShipNew = this.ServiceFriendShip.serviceCreate(friendship);
-        return ResponseEntity.ok(friendShipNew); // Example response
+        this.ServiceFriendShip.serviceCreate(friendship);
+        return ResponseEntity.ok("User Created successfully"); // Example response
     }
 
     // PUT to update a friendship by ID
     @PutMapping("/{id}")
     public ResponseEntity<String> updateFriendship(@PathVariable String id, @RequestBody FriendShip updatedFriendship) {
         // Logic to update a friendship
-        FriendShip friendShipNew = this.ServiceFriendShip.repositoryFriendEdit(id, updatedFriendship);
         return ResponseEntity.ok("edited succefully"); // Example response
     }
 
