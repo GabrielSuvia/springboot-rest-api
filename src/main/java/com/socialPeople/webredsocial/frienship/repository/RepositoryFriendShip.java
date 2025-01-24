@@ -3,14 +3,13 @@ package com.socialPeople.webredsocial.frienship.repository;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.socialPeople.webredsocial.frienship.dto.FriendShip;
 
 @Repository
 public class RepositoryFriendShip {
-    @Autowired
+
     private FriendShip friend = new FriendShip("friend", null, null);
 
     public List<FriendShip> repositoryAllFriend() {

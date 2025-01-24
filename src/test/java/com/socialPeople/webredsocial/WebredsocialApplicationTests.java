@@ -9,7 +9,7 @@ import org.springframework.security.test.context.support.WithMockUser;
 @WithMockUser(username = "user", password = "123", roles = "USER")
 @SpringBootTest
 @AutoConfigureMockMvc
-public class WebredsocialApplicationTests {
+class WebredsocialApplicationTests {
     @Test
     void contextLoads() {
     }

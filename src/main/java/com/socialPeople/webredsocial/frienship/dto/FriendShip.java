@@ -13,6 +13,8 @@ public class FriendShip {
 
     public FriendShip(String state, User user1, User user2) {
         this.state = state;
+        this.user1 = user1;
+        this.user2 = user2;
     }
 
     public String getState() {
