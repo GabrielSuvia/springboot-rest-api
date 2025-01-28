@@ -1,8 +1,6 @@
 package com.socialPeople.webredsocial.comment.repository;
 
 import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.stereotype.Repository;
 
 import com.socialPeople.webredsocial.comment.dto.Comment;
@@ -11,11 +9,11 @@ import com.socialPeople.webredsocial.comment.dto.Comment;
 public class CommentRepository {
 
     // db
-    private Comment comment = new Comment("hello wordl", null);
+    private Comment comment = new Comment("hello world", null);
 
-    public List<Comment> getAllComment() {
+    public ArrayList<Comment> getAllComment() {
 
-        List<Comment> listComment = new ArrayList<Comment>();
+        ArrayList<Comment> listComment = new ArrayList<Comment>();
         listComment.add(comment);
         listComment.add(comment);
         return listComment;

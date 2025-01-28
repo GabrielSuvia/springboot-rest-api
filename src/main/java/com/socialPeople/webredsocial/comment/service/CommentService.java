@@ -1,6 +1,6 @@
 package com.socialPeople.webredsocial.comment.service;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import org.springframework.stereotype.Service;
 
@@ -11,8 +11,8 @@ import com.socialPeople.webredsocial.comment.repository.CommentRepository;
 public class CommentService {
     private CommentRepository commentRepository;
 
-    public List<Comment> getAllComments() {
-        List<Comment> listComments = this.commentRepository.getAllComment();
+    public ArrayList<Comment> getAllComments() {
+        ArrayList<Comment> listComments = this.commentRepository.getAllComment();
         return listComments;
     }
 

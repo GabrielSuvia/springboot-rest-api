@@ -53,6 +53,7 @@ public class UserControllerTestUnit {
 
     // asert
     assertEquals(HttpStatus.OK, response.getStatusCode());
+    assertEquals(listUser, response.getBody());
     assertEquals(listUser.size(), response.getBody().size());
     Mockito.verify(userService, Mockito.times(1)).getAllusers();
   }

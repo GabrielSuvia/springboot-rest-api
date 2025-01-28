@@ -1,9 +1,11 @@
 package com.socialPeople.webredsocial.comment.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 //import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,9 +34,12 @@ public class CommentController {
 
     // Obtener todos los comentarios
     @GetMapping
-    public ResponseEntity<List<Comment>> getAllComments() {
-        List<Comment> comments = commentService.getAllComments();
-        return new ResponseEntity<>(comments, HttpStatus.OK);
+    public ResponseEntity<ArrayList<Comment>> getAllComments() {
+        ArrayList<Comment> comments = commentService.getAllComments();
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .header("Content-Type", "application/json")
+                .body(comments);
     }
 
     // Obtener un comentario por ID
