@@ -3,8 +3,6 @@ package com.socialPeople.webredsocial.user.controller;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 import com.socialPeople.webredsocial.user.dto.User;
 import com.socialPeople.webredsocial.user.service.UserService;
@@ -29,14 +27,13 @@ public class UserController {
 
     // Get of all users
     @GetMapping("/getUsers")
-    public ResponseEntity<Map<String, Object>> getUsers() {
+    public ResponseEntity<ArrayList<User>> getUsers() {
         ArrayList<User> user = this.userService.getAllusers();
-        Map<String, Object> response = new HashMap<>();
-        response.put("users", user);
+
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .header("Content-Type", "application/json")
-                .body(response);
+                .body(user);
 
     }
 

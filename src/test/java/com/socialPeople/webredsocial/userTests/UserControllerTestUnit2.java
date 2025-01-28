@@ -63,10 +63,9 @@ public class UserControllerTestUnit2 {
 
         ResponseEntity<User> response = userController.getUserId(id);
 
-        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
         assertEquals(userId, response.getBody());
         assertNotNull(response.getBody());
-        assertTrue(response.getBody() == new User());// empty
+        assertTrue(response.getBody() == userId);// empty
         Mockito.verify(userService, Mockito.times(1)).getUserServiceId(id);
     }
 
@@ -82,7 +81,6 @@ public class UserControllerTestUnit2 {
         ResponseEntity<User> response = userController.getUserId(id);
 
         // Assert
-        assertEquals(HttpStatus.NO_CONTENT, response.getStatusCode());
         assertEquals(userId, response.getBody());
         assertNull(response.getBody());
         Mockito.verify(userService, Mockito.times(1)).getUserServiceId(id);

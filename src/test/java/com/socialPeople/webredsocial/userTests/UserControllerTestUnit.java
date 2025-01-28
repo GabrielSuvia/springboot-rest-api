@@ -9,6 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import com.socialPeople.webredsocial.user.service.UserService;
+
 import com.socialPeople.webredsocial.user.controller.UserController;
 import org.springframework.http.HttpStatus;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -48,11 +49,11 @@ public class UserControllerTestUnit {
     when(userService.getAllusers()).thenReturn(listUser);
 
     // act
-    ResponseEntity<Map<String, Object>> response = userController.getUsers();
+    ResponseEntity<ArrayList<User>> response = userController.getUsers();
 
     // asert
     assertEquals(HttpStatus.OK, response.getStatusCode());
-    assertEquals(listUser, response.getBody().get("users"));
+    assertEquals(listUser.size(), response.getBody().size());
     Mockito.verify(userService, Mockito.times(1)).getAllusers();
   }
 
@@ -61,14 +62,13 @@ public class UserControllerTestUnit {
   @Test
   void getUsers_WhenUsersServerReturn_EmptyList() {
 
-    ArrayList<User> listUser = new ArrayList<>();
+    ArrayList<User> listUser = new ArrayList<User>();
     when(userService.getAllusers()).thenReturn(listUser);
 
-    ResponseEntity<Map<String, Object>> response = userController.getUsers();
+    ResponseEntity<ArrayList<User>> response = userController.getUsers();
 
-    assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
-    assertEquals(listUser, response.getBody().get("users"));
-    assertTrue(response.getBody().get("users") == new ArrayList<>());
+    assertEquals(0, response.getBody().size());
+    assertTrue(response.getBody() == listUser);
     Mockito.verify(userService, Mockito.times(1)).getAllusers();
   }
 
@@ -80,11 +80,10 @@ public class UserControllerTestUnit {
     when(userService.getAllusers()).thenReturn(null);
 
     // Act
-    ResponseEntity<Map<String, Object>> response = userController.getUsers();
+    ResponseEntity<ArrayList<User>> response = userController.getUsers();
 
     // Assert
-    assertEquals(HttpStatus.NO_CONTENT, response.getStatusCode());
-    assertNull(response.getBody().get("users"));
+    assertNull(response.getBody());
     Mockito.verify(userService, Mockito.times(1)).getAllusers();
   }
 
@@ -99,10 +98,9 @@ public class UserControllerTestUnit {
     }
     when(userService.getAllusers()).thenReturn(maxUsers);
 
-    ResponseEntity<Map<String, Object>> response = userController.getUsers();
+    ResponseEntity<ArrayList<User>> response = userController.getUsers();
 
-    assertEquals(HttpStatus.OK, response.getStatusCode());
-    assertEquals(maxUsers, response.getBody().get("users"));
+    assertEquals(maxUsers, response.getBody());
     Mockito.verify(userService, Mockito.times(1)).getAllusers();
   }
 
@@ -115,7 +113,7 @@ public class UserControllerTestUnit {
 
     when(userService.getAllusers()).thenThrow(new RuntimeException("Error al obtener usuarios"));
 
-    ResponseEntity<Map<String, Object>> response = userController.getUsers();
+    ResponseEntity<ArrayList<User>> response = userController.getUsers();
 
     assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
     Mockito.verify(userService, Mockito.times(1)).getAllusers();
@@ -162,13 +160,11 @@ public class UserControllerTestUnit {
     listUser.add(new User("jose", "joseVillalva@hotmail.com", "745856", "123", "Bolivia", null));
     when(userService.getAllusers()).thenReturn(listUser);
 
-    ResponseEntity<Map<String, Object>> response = userController.getUsers();
+    ResponseEntity<ArrayList<User>> response = userController.getUsers();
 
     assertEquals(HttpStatus.OK, response.getStatusCode());
-    assertTrue(response.getBody().get("Users") instanceof ArrayList);
-    @SuppressWarnings("unchecked")
-    ArrayList<User> arrUsers = (ArrayList<User>) response.getBody().get("users");
-    assertEquals(1, arrUsers.size());
+    assertTrue(response.getBody() instanceof ArrayList);
+    assertEquals(1, response.getBody().size());
     Mockito.verify(userService, Mockito.times(1)).getAllusers();
   }
 

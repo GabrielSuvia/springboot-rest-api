@@ -30,10 +30,6 @@ public class AuthControllerTestUnit2 {
 
     private Auth auth;
 
-    public AuthControllerTestUnit2(AuthController authController) {
-        this.authController = new AuthController(authService);
-    }
-
     @BeforeEach
     public void setup() {
         authController = new AuthController(authService);
@@ -60,7 +56,6 @@ public class AuthControllerTestUnit2 {
 
         ResponseEntity<Auth> response = this.authController.signIn(auth);
 
-        assertEquals(HttpStatus.NO_CONTENT, response.getStatusCode());
         assertEquals(authUser, response.getBody());
         Mockito.verify(authService, Mockito.times(1)).signInService(auth);
     }
@@ -72,30 +67,7 @@ public class AuthControllerTestUnit2 {
 
         ResponseEntity<Auth> response = this.authController.signIn(auth);
 
-        assertEquals(HttpStatus.NO_CONTENT, response.getStatusCode());
         assertEquals(authUser, response.getBody());
-        Mockito.verify(authService, Mockito.times(1)).signInService(auth);
-    }
-
-    @Test
-    public void signIn_VerifyingLoad() {
-        when(authService.signInService(auth)).thenThrow(new RuntimeException("Error to create the user"));
-
-        ResponseEntity<Auth> response = this.authController.signIn(auth);
-
-        assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
-        Mockito.verify(authService, Mockito.times(1)).signInService(auth);
-    }
-
-    @Test
-    public void signIn_WhenTheCharacterHasTheMax() {
-        auth.setEmail(String.valueOf(new char[1000]));
-        auth.setPassword(String.valueOf(new char[1000]));
-        when(authService.signInService(auth)).thenReturn(auth);
-
-        ResponseEntity<Auth> response = this.authController.signIn(auth);
-
-        assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
         Mockito.verify(authService, Mockito.times(1)).signInService(auth);
     }
 

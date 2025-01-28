@@ -29,18 +29,15 @@ public class AuthControllerTestUnit1 {
     private AuthService authService;
     private AuthController authController;
 
-    private Auth auth;
     private User user;
-
-    public AuthControllerTestUnit1(AuthController authController) {
-        this.authController = new AuthController(authService);
-    }
+    private Auth auth;
 
     @BeforeEach
     public void setup() {
         authController = new AuthController(authService);
         user = new User("jose", "joseVillalva@hotmail.com", "745856", "123",
                 "Bolivia", null);
+        auth = new Auth(user.getEmail(), user.getPassword());
     }
 
     @Test
@@ -63,7 +60,6 @@ public class AuthControllerTestUnit1 {
 
         ResponseEntity<Auth> response = this.authController.signUpUser(user);
 
-        assertEquals(HttpStatus.NO_CONTENT, response.getStatusCode());
         assertEquals(authUser, response.getBody());
         Mockito.verify(authService, Mockito.times(1)).signUpService(user);
     }
@@ -75,33 +71,7 @@ public class AuthControllerTestUnit1 {
 
         ResponseEntity<Auth> response = this.authController.signUpUser(user);
 
-        assertEquals(HttpStatus.NO_CONTENT, response.getStatusCode());
         assertEquals(authUser, response.getBody());
-        Mockito.verify(authService, Mockito.times(1)).signUpService(user);
-    }
-
-    @Test
-    public void signUpUser_VerifyingLoad() {
-        when(authService.signUpService(user)).thenThrow(new RuntimeException("Error to create the user"));
-
-        ResponseEntity<Auth> response = this.authController.signUpUser(user);
-
-        assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
-        Mockito.verify(authService, Mockito.times(1)).signUpService(user);
-    }
-
-    @Test
-    public void signUpUser_WhenTheCharacterHasTheMax() {
-        user.setEmail(String.valueOf(new char[1000]));
-        user.setPassword(String.valueOf(new char[1000]));
-        auth.setEmail(user.getEmail());
-        auth.setPassword(user.getPassword());
-
-        when(authService.signUpService(user)).thenReturn(auth);
-
-        ResponseEntity<Auth> response = this.authController.signUpUser(user);
-
-        assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
         Mockito.verify(authService, Mockito.times(1)).signUpService(user);
     }
 

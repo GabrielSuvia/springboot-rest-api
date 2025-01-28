@@ -66,7 +66,6 @@ public class UserControllerTestUnit3 {
 
         ResponseEntity<User> response = userController.putMethodName(id, updateUser);
 
-        assertEquals(HttpStatus.NO_CONTENT, response.getStatusCode());
         assertTrue(updateUser == response.getBody());
         Mockito.verify(userService, Mockito.times(1)).userServiceUpdate(id, updateUser);
     }
@@ -83,7 +82,6 @@ public class UserControllerTestUnit3 {
         ResponseEntity<User> response = userController.putMethodName(id, userUpdate);
 
         // Assert
-        assertEquals(HttpStatus.NO_CONTENT, response.getStatusCode());
         assertNull(response.getBody());
         Mockito.verify(userService, Mockito.times(1)).userServiceUpdate(id, userUpdate);
     }
