@@ -47,7 +47,7 @@ public class CommentController {
     }
 
     // Crear un nuevo comentario
-    @PostMapping("create")
+    @PostMapping("/create")
     public ResponseEntity<Comment> createComment(@RequestBody Comment comment) {
         Comment newComment = this.commentService.createComment(comment);
         return new ResponseEntity<>(newComment, HttpStatus.CREATED);

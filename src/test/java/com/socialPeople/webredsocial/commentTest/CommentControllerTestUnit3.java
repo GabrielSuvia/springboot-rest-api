@@ -29,13 +29,11 @@ public class CommentControllerTestUnit3 {
     private CommentController commentController;
 
     private Comment comment;
-    private String id;
 
     @BeforeEach
     public void setup() {
         commentController = new CommentController(commentService);
         comment = new Comment("the best post", null);
-        id = "1";
     }
 
     @Test
@@ -78,7 +76,7 @@ public class CommentControllerTestUnit3 {
     @Test
     void createComment_WhenUserServiceThrowsException() {
 
-        when(commentService.createComment(comment)).thenThrow(new RuntimeException("Error al obtener usuarios"));
+        when(commentService.createComment(comment)).thenThrow(new RuntimeException("Error al crear comentario"));
 
         ResponseEntity<Comment> response = commentController.createComment(comment);
 
