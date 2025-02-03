@@ -65,7 +65,7 @@ public class AuthControllerTestUnit1 {
     }
 
     @Test
-    public void signUpUser_ReturnNullLikeResponse() {
+    public void signUpUser_ReturnNullResponse() {
         Auth authUser = null;
         when(authService.signUpService(user)).thenReturn(authUser);
 

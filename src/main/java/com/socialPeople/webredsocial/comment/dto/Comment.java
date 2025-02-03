@@ -1,13 +1,13 @@
 package com.socialPeople.webredsocial.comment.dto;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Comment {
 
     private String content;
-    private Date date;
+    private LocalDate date;
 
-    public Comment(String content, Date date) {
+    public Comment(String content, LocalDate date) {
         this.content = content;
         this.date = date;
     }
@@ -16,7 +16,7 @@ public class Comment {
         return this.content;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return this.date;
     }
 
@@ -24,7 +24,7 @@ public class Comment {
         this.content = contents;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 }

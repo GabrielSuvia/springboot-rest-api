@@ -1,6 +1,5 @@
 package com.socialPeople.webredsocial.userTests;
 
-import java.util.Map;
 import java.util.ArrayList;
 
 import org.springframework.boot.test.context.SpringBootTest;
@@ -26,6 +25,7 @@ import org.springframework.security.test.context.support.WithMockUser;
 @WithMockUser(username = "user", password = "123", roles = "USER")
 @SpringBootTest
 @ExtendWith(MockitoExtension.class)
+
 public class UserControllerTestUnit {
 
   @Mock

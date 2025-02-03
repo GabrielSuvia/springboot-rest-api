@@ -1,20 +1,20 @@
 package com.socialPeople.webredsocial.comment.repository;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+
 import org.springframework.stereotype.Repository;
 
 import com.socialPeople.webredsocial.comment.dto.Comment;
 
 @Repository
 public class CommentRepository {
-
+    private LocalDate date = LocalDate.of(2025, 1, 1);
     // db
-    private Comment comment = new Comment("hello world", null);
+    private Comment comment = new Comment("this is good", date);
 
     public ArrayList<Comment> getAllComment() {
-
         ArrayList<Comment> listComment = new ArrayList<Comment>();
-        listComment.add(comment);
         listComment.add(comment);
         return listComment;
     }
@@ -34,7 +34,7 @@ public class CommentRepository {
         return commentEdited;
     }
 
-    public void deleteRepository(String id) {
-
+    public Comment deleteRepository(String id) {
+        return comment;
     }
 }

@@ -27,8 +27,8 @@ import com.socialPeople.webredsocial.comment.service.CommentService;
 @ExtendWith(MockitoExtension.class)
 public class CommentControllerTestUnit1 {
     @Mock
-    private CommentController commentController;
     private CommentService commentService;
+    private CommentController commentController;
 
     private Comment comment;
 
@@ -45,13 +45,13 @@ public class CommentControllerTestUnit1 {
         commentList.add(comment);
         commentList.add(comment);
 
-        when(commentService.getAllComments()).thenReturn(commentList);
-        // System.out.println("ADADA" + commentService.getAllComments());
+        when(commentService.getAllComm()).thenReturn(commentList);
+
         ResponseEntity<ArrayList<Comment>> response = commentController.getAllComments();
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals(commentList, response.getBody());
-        Mockito.verify(commentService, Mockito.times(1)).getAllComments();
+        Mockito.verify(commentService, Mockito.times(1)).getAllComm();
     }
 
     // 2
@@ -59,13 +59,13 @@ public class CommentControllerTestUnit1 {
     void getAllComments_WhenUsersServerReturn_EmptyList() {
 
         ArrayList<Comment> listComment = new ArrayList<Comment>();
-        when(commentService.getAllComments()).thenReturn(listComment);
+        when(commentService.getAllComm()).thenReturn(listComment);
 
         ResponseEntity<ArrayList<Comment>> response = commentController.getAllComments();
 
         assertEquals(0, response.getBody().size());
         assertTrue(response.getBody() == listComment);
-        Mockito.verify(commentService, Mockito.times(1)).getAllComments();
+        Mockito.verify(commentService, Mockito.times(1)).getAllComm();
     }
 
     // 3
@@ -73,14 +73,14 @@ public class CommentControllerTestUnit1 {
     @Test
     void getAllComments_WhenUsersServerReturn_Null() {
         // Arrange
-        when(commentService.getAllComments()).thenReturn(null);
+        when(commentService.getAllComm()).thenReturn(null);
 
         // Act
         ResponseEntity<ArrayList<Comment>> response = commentController.getAllComments();
 
         // Assert
         assertNull(response.getBody());
-        Mockito.verify(commentService, Mockito.times(1)).getAllComments();
+        Mockito.verify(commentService, Mockito.times(1)).getAllComm();
     }
 
     // 4
@@ -92,25 +92,25 @@ public class CommentControllerTestUnit1 {
         for (int i = 0; i < 10000; i++) {
             maxComments.add(comment);
         }
-        when(commentService.getAllComments()).thenReturn(maxComments);
+        when(commentService.getAllComm()).thenReturn(maxComments);
 
         ResponseEntity<ArrayList<Comment>> response = commentController.getAllComments();
 
         assertEquals(maxComments, response.getBody());
-        Mockito.verify(commentService, Mockito.times(1)).getAllComments();
+        Mockito.verify(commentService, Mockito.times(1)).getAllComm();
     }
 
     // 5
 
     @Test
-    void getAllComments_WhenUserServiceThrowsException_ReturnsInternalServerError() {
+    void getAllComments_WhenUserServiceThrowsException() {
 
-        when(commentService.getAllComments()).thenThrow(new RuntimeException("Error al obtener usuarios"));
+        when(commentService.getAllComm()).thenThrow(new RuntimeException("Error al obtener usuarios"));
 
         ResponseEntity<ArrayList<Comment>> response = commentController.getAllComments();
 
         assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
-        Mockito.verify(commentService, Mockito.times(1)).getAllComments();
+        Mockito.verify(commentService, Mockito.times(1)).getAllComm();
     }
 
     // 6
@@ -121,11 +121,11 @@ public class CommentControllerTestUnit1 {
         ArrayList<Comment> listComments = new ArrayList<>();
         listComments.add(comment);
         listComments.add(comment);
-        when(commentService.getAllComments()).thenReturn(listComments);
+        when(commentService.getAllComm()).thenReturn(listComments);
 
         commentController.getAllComments();
 
-        Mockito.verify(commentService, Mockito.atLeastOnce()).getAllComments();
+        Mockito.verify(commentService, Mockito.atLeastOnce()).getAllComm();
     }
 
     // 7
@@ -135,7 +135,7 @@ public class CommentControllerTestUnit1 {
         // Arrange
         ArrayList<Comment> listComment = new ArrayList<Comment>();
         listComment.add(comment);
-        when(commentService.getAllComments()).thenReturn(listComment);
+        when(commentService.getAllComm()).thenReturn(listComment);
 
         // Act
         commentController.getAllComments();
@@ -152,14 +152,14 @@ public class CommentControllerTestUnit1 {
 
         ArrayList<Comment> listComment = new ArrayList<>();
         listComment.add(comment);
-        when(commentService.getAllComments()).thenReturn(listComment);
+        when(commentService.getAllComm()).thenReturn(listComment);
 
         ResponseEntity<ArrayList<Comment>> response = commentController.getAllComments();
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertTrue(response.getBody() instanceof ArrayList);
         assertEquals(1, response.getBody().size());
-        Mockito.verify(commentService, Mockito.times(1)).getAllComments();
+        Mockito.verify(commentService, Mockito.times(1)).getAllComm();
     }
 
 }

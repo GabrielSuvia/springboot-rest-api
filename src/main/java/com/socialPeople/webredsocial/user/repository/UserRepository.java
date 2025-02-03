@@ -1,7 +1,6 @@
 package com.socialPeople.webredsocial.user.repository;
 
 import java.util.ArrayList;
-import java.text.ParseException;
 //import java.time.LocalDate;
 //import java.time.format.DateTimeFormatter;
 
