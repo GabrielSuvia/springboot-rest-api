@@ -1,5 +1,6 @@
 package com.socialPeople.webredsocial.frienship.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
@@ -19,13 +20,17 @@ import com.socialPeople.webredsocial.frienship.service.ServiceFriendShip;
 @RequestMapping("/friendShip")
 public class FriendShipController {
 
-    private ServiceFriendShip ServiceFriendShip;
+    private ServiceFriendShip serviceFriendShip;
+
+    public FriendShipController(ServiceFriendShip serviceFriendShip) {
+        this.serviceFriendShip = serviceFriendShip;
+    }
 
     // GET all friendships
     @GetMapping
-    public ResponseEntity<List<FriendShip>> getAllFriendships() {
+    public ResponseEntity<ArrayList<FriendShip>> getAllFriendships() {
         // Logic to fetch all friendships
-        List<FriendShip> listFriendShip = this.ServiceFriendShip.getAllFriendships();
+        ArrayList<FriendShip> listFriendShip = this.serviceFriendShip.getAllFriendships();
         return ResponseEntity.ok(listFriendShip); // Example response
     }
 
@@ -33,7 +38,7 @@ public class FriendShipController {
     @GetMapping("/{id}")
     public ResponseEntity<FriendShip> getFriendshipById(@PathVariable String id) {
         // Logic to fetch a friendship by ID
-        FriendShip listFriendShip = this.ServiceFriendShip.getIdFriendships(id);
+        FriendShip listFriendShip = this.serviceFriendShip.getIdFriendships(id);
         return ResponseEntity.ok(listFriendShip); // Example response
     }
 
@@ -41,7 +46,7 @@ public class FriendShipController {
     @PostMapping
     public ResponseEntity<String> createFriendship(@RequestBody FriendShip friendship) {
         // Logic to create a new friendship
-        this.ServiceFriendShip.serviceCreate(friendship);
+        this.serviceFriendShip.serviceCreate(friendship);
         return ResponseEntity.ok("User Created successfully"); // Example response
     }
 
@@ -56,7 +61,7 @@ public class FriendShipController {
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteFriendship(@PathVariable String id) {
         // Logic to delete a friendship
-        this.ServiceFriendShip.createFriendships(id);
+        this.serviceFriendShip.createFriendships(id);
         return ResponseEntity.ok("Friendship with ID " + id + " deleted"); // Example response
     }
 

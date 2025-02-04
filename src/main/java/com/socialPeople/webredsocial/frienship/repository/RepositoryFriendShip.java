@@ -1,7 +1,6 @@
 package com.socialPeople.webredsocial.frienship.repository;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
@@ -12,8 +11,8 @@ public class RepositoryFriendShip {
 
     private FriendShip friend = new FriendShip("friend", null, null);
 
-    public List<FriendShip> repositoryAllFriend() {
-        List<FriendShip> list = new ArrayList<>();
+    public ArrayList<FriendShip> repositoryAllFriend() {
+        ArrayList<FriendShip> list = new ArrayList<>();
         list.add(new FriendShip("friend", null, null));
         list.add(new FriendShip("friend", null, null));
         return list;

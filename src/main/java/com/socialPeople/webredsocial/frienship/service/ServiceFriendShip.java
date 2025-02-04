@@ -1,5 +1,6 @@
 package com.socialPeople.webredsocial.frienship.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -11,8 +12,8 @@ import com.socialPeople.webredsocial.frienship.repository.RepositoryFriendShip;
 public class ServiceFriendShip {
     private RepositoryFriendShip repositoryFriendShip;
 
-    public List<FriendShip> getAllFriendships() {
-        List<FriendShip> listFriendShips = repositoryFriendShip.repositoryAllFriend();
+    public ArrayList<FriendShip> getAllFriendships() {
+        ArrayList<FriendShip> listFriendShips = repositoryFriendShip.repositoryAllFriend();
         return listFriendShips;
     }
 
